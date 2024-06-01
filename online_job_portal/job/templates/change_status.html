@@ -1,0 +1,49 @@
+{%load static%}
+
+     {% block  body %}
+    
+     {% include "./admin_navigation.html" %}
+
+     <h1 style="font-size:bold;text-align:center;color:blue"><u>Recruiter Details</u></h1>
+     <hr>
+     
+     <form class="container mt-5" method="POST">
+         {% csrf_token %}
+         <label><b>Recruiter Name:</b></label>
+         <input type="text" class="form-control" style="width:300px" name="recname" value="{{recruiter.user.first_name}} {{recruiter.user.last_name}}">
+
+         <label><b>Status:</b></label>
+         <select  class="form-control" style="width:300px" name="status" >
+            <option value ="Accept">Accept</option>
+            <option value ="Reject">Reject</option>
+
+         </select>   
+
+         <button type="submit" class="btn btn-primary" style="margin-left:80px;margin-top:20px;margin-bottom:50px;color:yellow;background:black;height:40px;"><b>Submit</b></button>
+
+
+
+        
+     </form>   
+
+
+     {% include 'footer.html'%}
+
+     {% if error == "no" %}
+
+     <script>
+        alert("Status changed Successfully");
+        window.location = ('{% url "pending" %}')
+     </script>
+     {% endif %}
+
+     {% if error == "yes"%}
+
+     <script>
+        alert("Something went Wrong!!!  try again later....");
+ 
+     </script>
+     {% endif %}
+     {%endblock%}
+
+     

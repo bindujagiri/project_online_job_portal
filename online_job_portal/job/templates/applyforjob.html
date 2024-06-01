@@ -1,0 +1,56 @@
+
+{% load static %}
+
+     {% block  body %}
+    
+     {% include "./user_navigation.html" %}
+     <style>
+
+        tr{
+            text-align:center 
+        }
+     </style>
+
+     <script type="text/javascript" src="js/bootstrap/bootstrap-dropdown.js"></script>
+
+
+     <h1 style="font-size:bold;text-align:center;color:green"><b> Apply for Job</b></h1>
+     <hr>
+
+    <div class="container shadow-lg py-2 mb-2">
+        <form  style="background-color:grey "method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row" >
+                <label><b>Upload Resume<b></label>
+                <input type="file" class="form-control" name="resume" required >
+            </div>
+            <input type="submit" value="submit" class="btn btn-danger mt-3" >
+        </form>    
+    </div>   
+   
+
+    {% if error == "close" %}
+
+    <script>
+       alert("Application is Closed .Last date Over..!!");
+       window.location = ('{% url 'user_latestjobs' %}');
+    </script>
+    {% endif %}
+
+    {% if error == "notopen" %}
+
+    <script>
+       alert("Application Date is not open..!!");
+       window.location = ('{% url 'user_latestjobs' %}');
+    </script>
+    {% endif %}
+
+    {% if error == "done" %}
+
+    <script>
+       alert("Application Submitted Successfully..!!");
+       window.location = ('{% url 'user_latestjobs'user.id %}');
+    </script>
+    {% endif %}   
+  
+     {% endblock %}

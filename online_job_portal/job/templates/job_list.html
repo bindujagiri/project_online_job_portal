@@ -1,0 +1,57 @@
+
+{% load static %}
+
+     {% block  body %}
+    
+     {% include "./recruiter_navigation.html" %}
+     <style>
+
+        tr{
+            text-align:center 
+        }
+     </style>
+
+     <script type="text/javascript" src="js/bootstrap/bootstrap-dropdown.js"></script>
+
+
+     <h1 style="font-size:bold;text-align:center;color:green"><u>Update Jobs </u></h1>
+     <hr>
+
+     <table class="table table-hover container">
+
+        <thead>
+            <tr style="font-size:bold;background-color:green">
+                <th>S.No:</th>
+                <th>JOb Title:</th>
+                <th>Job Creation Date:</th>
+                <th> End-Date:</th>
+                <th>Salary:</th>
+                <th>Job Location:</th>
+                <th>Action:</th>
+
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for i in job %}
+            <tr>
+                <td> {{ forloop.counter}}</td>
+                <td> {{ i.title}} </td>
+                <td> {{ i.creationdate}}</td>
+                <td> {{ i.end_date}} </td>
+                <td> {{ i.salary}}</td>    
+                <td> {{ i.location}}</td>                
+            
+                <td><a href="{% url 'edit_job_recruiter' i.id %}" class="btn btn-success btn-extrasmall" >Edit</a>
+                 {% empty %}
+                <tr><td colspan="10" style="text-align:center">Currently no Data Available</td></tr>
+
+            </tr>
+
+             {% endfor %}     
+        </tbody>        
+
+     </table>
+  
+     {% endblock %}

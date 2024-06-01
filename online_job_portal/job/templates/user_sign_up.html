@@ -1,0 +1,124 @@
+{%load static%}
+
+     {% block  body %}
+    
+     {% include "./navigation.html" %}
+     
+    <script>
+        function checkpass()
+        {
+           if( document.signup.pwd.value != document.signup.cpwd.value)
+           {
+                alert('Password and Confirm password does not match...');
+                document.signup.cpwd.focus()
+                return false;
+           }
+           return true;
+        }
+    </script>
+
+     <h1 style="font-size:bold;text-align:center;color:green"><u>User Registration</u></h1>
+     <hr>
+     
+     <form class="container mt-5" onsubmit="return checkpass()"method="POST" name="signup" enctype="multipart/form-data" style="background-color:gray">
+         {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label><b> First Name</b></label>
+                    <input type="text" class="form-control" name="fname" placeholder="Enter First name" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label> <b>Last Name</b> </label>
+                    <input type="text" class="form-control" name="lname" placeholder="Enter Last name" required>
+                </div>       
+           </div>  
+
+         <div class="row">
+            <div class="form-group col-md-6">
+                <label> <b>Contact Number</b></label>
+                <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number" required>
+            </div>
+              
+          
+
+            
+                <div class="form-group col-md-6">
+                    <label><b> Email-id</b></label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email-id" required>
+
+                </div>
+            </div> 
+
+             <div class="row">
+                <div class="form-group col-md-6">
+                     <label>,<b> Password </b></label>
+                     <input type="password" class="form-control" name="pwd" placeholder="Enter password" required>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                     <label><b> Confirm Password </b></label>
+                     <input type="password" class="form-control" name="cpwd" placeholder="Re-enter password" required>
+
+                </div>
+           </div> 
+
+            <div class="row">
+                
+             
+                <div class="form-group col-md-6">
+                    <label> <b>Image</b> </label>
+                    <input type="file" class="form-control" name="image" required >
+        
+                </div>
+                <div id="divActivites" name="divActivites" style="border:thin" class="form-group col-md-6" >
+                        
+                    
+                    <label> <b>Gender</b></label>
+                  
+                
+                        <div  class="custom-control custom-radio custom-control-inline"  style="background-color:white;height:38px; border-radius:6% ;padding-left:5px;padding-top:6px">
+                         <input class="custom-control-input" value="Male" type="radio" name="gender" id="customRadioInline1" required>
+                         <label class="custom-control-label" for="customRadioInline1"> Male</label>
+                      
+                         <input class="custom-control-input" value="Female" type="radio" name="gender" id="customRadioInline2">
+                         <label class="custom-control-label" for="customRadioInline2">Female</label>
+                      
+                    
+                    </div>
+                    
+                 
+               
+              
+            </div>
+
+            <div style="text-align:center">
+ <input type="submit" value="Register/Sign-Up" class="btn btn-primary" style="font-size:23px;color:white;background:blue;height:40px; width:200px;margin-top:25px;margin-bottom:25px;padding-bottom:5px">
+
+            </div>
+ </form>  
+
+	
+
+     {% include 'footer.html'%}
+
+     {% if error == "no" %}
+
+     <script>
+        alert("Signup Successful");
+        window.location = ('{% url 'user_login' %}');
+     </script>
+     {% endif %}
+
+     {% if error == "yes"%}
+
+     <script>
+        alert("Something went wrong !! please try again later....");
+ 
+     </script>
+     {% endif %}
+
+     {%endblock%}
+     
+      

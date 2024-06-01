@@ -1,0 +1,47 @@
+{% load static %}
+<div class="mt-2" style="background-color:black;width:100%;height:250px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-3">
+                <h3 class="text-white"style="font-family:Monotype corsiva"><b> Contact Information</b></h3>
+                     <p style="color:yellow;font-size:15px;font-family:calibri"> <i class="fa fa-map-marker text-danger"></i> <b> Kalarcode area Alappey </b></p>  
+                     <p style="color:yellow;font-size:15px;font-family:calibri"> <i class="fa fa-envelope" aria-hidden="true"></i><b> binduja76@gmail.com </b></p>  
+                     <p style="color:yellow;font-size:15px;font-family:calibri"> <i class="fa fa-phone-square" aria-hidden="true"></i><b> +91-8606771466 </b></p>  
+
+            </div>   
+           
+             <div class="col-md-4 mt-3">
+                <h3 class="text-white" style="font-family:Monotype corsiva"><b> Online Placement</b></h3>
+                <p style="color:yellow;font-size:15px;font-family:calibri">
+                    Online Placement Training is a placement processes and requirements
+                    of the major organizations, institutions, and industries and aims to
+                    provide our trainees the soft skills, logical aptitude and reasoning,
+                    interpersonal communication skills,along with personality development 
+                    to ensure that they can qualify for placements. 
+
+
+                </p>
+
+               </div>   
+               <div class="col-md-4 mt-3">
+                <h3 class="text-white" style="font-family:Monotype corsiva"><b> News Letter</b></h3>
+                <p style="color:yellow;font-size:15px;font-family:calibri ">
+                    If you want to know any detailed Information,you can contact us through e-mail ...
+                   <form class="form-inline" method="POST">
+                        {% csrf_token %}
+                        <input type="email" name="emailid" placeholder="Enter Email-id"required-class="form-control mr-2">
+                        <input type="submit" value="Send" class="btn btn-primary">  
+                 </form>
+
+                </p>
+
+               </div>  
+
+        </div>   
+
+
+
+    </div>   
+
+
+</div>

@@ -1,0 +1,57 @@
+
+{% load static %}
+
+     {% block  body %}
+    
+     {% include "./navigation.html" %}
+     <style>
+
+        tr{
+            text-align:center 
+        }
+     </style>
+
+     <script type="text/javascript" src="js/bootstrap/bootstrap-dropdown.js"></script>
+
+
+     <h1 style="font-size:bold;text-align:center;color:blue"><u>Latest Notifications</u></h1>
+     <hr>
+
+     <table class="table table-hover container">
+
+        <thead>
+            <tr style="font-size:bold;background-color:green">
+                <th>S.No:</th>
+                <th>Company Name:</th>
+                <th>JOb Title:</th>
+                <th> Location:</th>
+                <th> Start-Date:</th>
+                <th> End-Date:</th>
+                <th>Action:</th>   
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for i in job %}
+            <tr>
+                <td> {{ forloop.counter}}</td>
+                <td> {{ i.recruiter.company}} </td>
+                <td> {{ i.title}}</td>
+                <td> {{ i.location}} </td>
+                <td> {{ i.start_date}}</td>
+                <td> {{ i.end_date}}</td>
+                
+                <td><a href="{% url 'user_login' %}" class="btn btn-success btn-extrasmall" >Login to apply</a>
+                    {% empty %}
+                    <tr><td colspan="10" style="text-align:center">Currently no Data Available</td></tr>
+            </tr>
+
+             {% endfor %}     
+        </tbody>        
+
+     </table>
+
+     {% include "footer.html" %}
+
+  
+     {% endblock %}

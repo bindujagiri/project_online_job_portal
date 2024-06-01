@@ -1,0 +1,45 @@
+{%load static%}
+
+     {% block  body %}
+    
+     {% include "./navigation.html" %}
+
+     <h1 style="font-size:bold;text-align:center;color:blue"><u>Admin Login</u></h1>
+     <hr>
+     
+     <form class="container mt-5" method="POST">
+         {% csrf_token %}
+         <label><b>UserName:</b></label>
+         <input type="text" class="form-control" name="uname" placeholder="Enter username" style="width:300px" required>
+
+         <label><b>Password:</b></label>
+         <input type="password" class="form-control" name="pwd" placeholder="Enter password" style="width:300px" required>
+
+         <button type="submit" class="btn btn-primary" style="color:yellow;background:black;height:40px;"><b>Submit</b></button>
+
+
+
+        
+     </form>   
+
+
+     {% include 'footer.html'%}
+
+     {% if error == "no" %}
+
+     <script>
+        alert("Login Successful");
+        window.location = ('{% url "admin_home" %}')
+     </script>
+     {% endif %}
+
+     {% if error == "yes" %}
+
+     <script>
+        alert("Invalid Login  Credentials!!  try again....");
+ 
+     </script>
+     {% endif %}
+     {%endblock%}
+
+     

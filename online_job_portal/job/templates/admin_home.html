@@ -1,0 +1,62 @@
+{% load static %}
+
+     {% block  body %}
+    
+     {% include "./admin_navigation.html" %}
+     
+     <style>
+          .mydiv:hover {
+           box-shadow: 0 0 20px 0 rgba(0,0,0,0.3)
+   
+           }
+           
+   
+       </style>
+
+       <marquee style="font-size:30px;color:green"><b>Admin</b>
+       </marquee>
+
+
+       <div class="container mt-5">
+          <div class="row mt-5">
+              <div class="col mt-6 mydiv"style="font-size:20px;color:blue">
+                  <p > <i class="fa fa-user" aria-hidden="true"></i><b>  Total Recruiters </b><br>
+                        <p  class="text-left font-weight-bold"> {{ rcount }}</p>
+                   </p>  
+                 
+
+                 </div>
+
+                 <div class="col mt-6 mydiv"style="font-size:20px;color:blue">
+                  <p > <i class="fa fa-user" aria-hidden="true"></i><b> Total Users</b><br>
+                         <p class="text-left font-weight-bold">{{ scount }}</p>
+                  </p>  
+                 
+
+                 </div>
+
+                 <div class="col mt-6 "style="font-size:20px;color:blue">
+                    <img src="{%static './images/img13.jpg' %}" style="height:300px;width:300px">
+ 
+                   
+  
+                   </div>
+  
+
+                
+
+                 
+
+                
+
+                
+          </div>
+
+
+      </div>
+
+   
+
+
+    
+     {% endblock %}
